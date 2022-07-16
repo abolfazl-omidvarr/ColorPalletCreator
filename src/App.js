@@ -5,7 +5,7 @@ import PalletList from "./Components/palletList";
 import seedColors from "./seedColors";
 import ColorBoxes from "./Components/colorBoxes";
 import ColorShades from "./Components/colorShades";
-import CreatePallet from "./Components/createPallet";
+import CreatePallet from "./Components/createPallet/createPallet";
 
 //Application function
 export default function App(props) {

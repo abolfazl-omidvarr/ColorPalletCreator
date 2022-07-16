@@ -1,18 +1,43 @@
 import React, { useState, useEffect, useRef } from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
+import {
+	Button,
+	Dialog,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	Slide,
+	Typography,
+	Box,
+} from "@mui/material";
 import Picker from "emoji-picker-react";
-import { Box } from "@mui/system";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { Typography } from "@mui/material";
 
+//slide transition for dialog box
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
+
+// styling
+const dialogStyleSX = {
+	DialogTitle: {
+		width: "100%",
+		mt: 8,
+		fontFamily: '"Roboto Condensed", sans-serif',
+	},
+	ValidatorFormBox: {
+		position: "absolute",
+		top: "1rem",
+		right: "1rem",
+		display: "flex",
+		gap: "1rem",
+		fontFamily: '"Roboto Condensed", sans-serif',
+	},
+	PalletEmojiTypo: {
+		m: "20px 0px",
+		fontFamily: '"Roboto Condensed", sans-serif',
+	},
+};
+//end of styling
 
 export default function ChoosePalletNameDialogBox({
 	open,
@@ -22,6 +47,8 @@ export default function ChoosePalletNameDialogBox({
 }) {
 	const [palletName, setPalletName] = useState("");
 	const [palletEmoji, setPalletEmoji] = useState("");
+
+	//add a validation rule for TextValidator
 	useEffect(() => {
 		ValidatorForm.addValidationRule("isUniquePalletName", (value) =>
 			palletNames.every(
@@ -35,15 +62,17 @@ export default function ChoosePalletNameDialogBox({
 		);
 	});
 
+	//open & close dialog box
 	function handleClickOpenClose() {
 		setOpen(!open);
 	}
+
 	function submitClickHandler() {
-		updateColorPallet(palletName, palletEmoji);
-		handleClickOpenClose();
+		updateColorPallet(palletName, palletEmoji); //send picked name and emoji to createPallet component
+		handleClickOpenClose(); //close
 	}
 	return (
-		<div>
+		<div className="ChoosePalletNameDialogBox">
 			<Dialog
 				open={open}
 				TransitionComponent={Transition}
@@ -51,28 +80,13 @@ export default function ChoosePalletNameDialogBox({
 				onClose={handleClickOpenClose}
 				aria-describedby="Pallet name dialog"
 			>
-				<DialogTitle
-					sx={{
-						width: "100%",
-						mt: 8,
-						fontFamily: '"Roboto Condensed", sans-serif',
-					}}
-				>
+				<DialogTitle sx={dialogStyleSX.DialogTitle}>
 					Choose a name and emoji for your new shiny pallet
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText></DialogContentText>
 					<ValidatorForm ref={useRef()} onSubmit={submitClickHandler}>
-						<Box
-							sx={{
-								position: "absolute",
-								top: "1rem",
-								right: "1rem",
-								display: "flex",
-								gap: "1rem",
-								fontFamily: '"Roboto Condensed", sans-serif',
-							}}
-						>
+						<Box sx={dialogStyleSX.ValidatorFormBox}>
 							<Button color="secondary" onClick={handleClickOpenClose}>
 								Never Mind
 							</Button>
@@ -92,13 +106,7 @@ export default function ChoosePalletNameDialogBox({
 							validators={["required", "isUniquePalletName"]}
 							errorMessages={["this field is required", "This name is taken"]}
 						/>
-						<Typography
-							variant="h6"
-							sx={{
-								m: "20px 0px",
-								fontFamily: '"Roboto Condensed", sans-serif',
-							}}
-						>
+						<Typography variant="h6" sx={dialogStyleSX.PalletEmojiTypo}>
 							Pallet Emoji:
 							<Box component="span" sx={{ fontSize: "28px" }}>
 								{palletEmoji}

@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { styled } from "@mui/system";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import { Stack, Button, Box } from "@mui/material";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import chroma from "chroma-js";
 import { ChromePicker } from "react-color";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
+//styling
 const PickerButtonStack = styled(Stack)((props) => ({
 	width: "100%",
+	flexDirection: "row",
 }));
 const ColorPickerBox = styled(Box)((props) => ({
 	display: "grid",
@@ -26,6 +26,7 @@ const ColorPickerButtom = styled(Button)((props) => ({
 		backgroundColor: props.bgcolor ? props.bgcolor : "#000",
 	},
 }));
+//end of styling
 
 export default function ColorPicker({
 	updateNewColorList,
