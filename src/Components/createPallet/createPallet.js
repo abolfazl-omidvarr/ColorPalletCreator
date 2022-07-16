@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import PalletCreateDrawer from "./drawer";
 import ChoosePalletNameDialogBox from "./choosePalletNameDialogBox";
+
+
 export default function CreatePallet({ colorPallets, setColorPallets }) {
+	// open & close name dialog state hook
 	const [nameDialogOpen, setNameDialogOpen] = useState(false);
+
+	//new color list state hook and initial values
 	const [newColorList, setNewColorList] = useState([
 		{ color: "#000000", name: "1" },
 		{ color: "#532626", name: "2" },
@@ -12,34 +17,21 @@ export default function CreatePallet({ colorPallets, setColorPallets }) {
 		{ color: "#e74c3c", name: "6" },
 		{ color: "#d35400", name: "7" },
 		{ color: "#f39c12", name: "8" },
-		{ color: "#ff7675", name: "9" },
-		{ color: "#e17055", name: "10" },
-		{ color: "#e84393", name: "11" },
-		{ color: "#636e72", name: "12" },
-		{ color: "#ffeaa7", name: "13" },
-		{ color: "#fdcb6e", name: "14" },
-		{ color: "#e15055", name: "15" },
-		{ color: "#6c5ce7", name: "16" },
-		{ color: "#a29bfe", name: "17" },
-		{ color: "#f27675", name: "18" },
-		{ color: "#b2bec3", name: "19" },
-		{ color: "#bdc581", name: "20" },
 	]);
+
+	//extract color name for sending to palletName form for validation
 	const palletNames = colorPallets.map((pallet) =>
 		pallet.paletteName.replace(/ /g, "").toLowerCase()
 	);
 
-	function updateNewColorList(color) {
-		setNewColorList([...newColorList, color]);
-	}
+	//delete from new Color function, send to new color boxes
 	function deleteFromNewColorList(color) {
 		setNewColorList(
 			newColorList.filter((colorObj) => colorObj.name !== color.name)
 		);
 	}
-	function emptyNewColorList() {
-		setNewColorList([]);
-	}
+
+	//gather name,emoji and new colors to send to App component and update Pallet List
 	function updateColorPallet(name, emoji) {
 		const newPallet = {
 			paletteName: name,
@@ -49,10 +41,6 @@ export default function CreatePallet({ colorPallets, setColorPallets }) {
 		};
 		setColorPallets([...colorPallets, newPallet]);
 	}
-	// useEffect(() => {
-	// 	console.log(newColorList);
-	// 	console.log("CP updated");
-	// });
 	return (
 		<div className="CreatePallet">
 			<ChoosePalletNameDialogBox
@@ -63,10 +51,8 @@ export default function CreatePallet({ colorPallets, setColorPallets }) {
 			/>
 			<PalletCreateDrawer
 				setNameDialogOpen={setNameDialogOpen}
-				updateNewColorList={updateNewColorList}
 				newColors={newColorList}
 				setNewColors={setNewColorList}
-				emptyNewColors={emptyNewColorList}
 				deleteFromNewColorList={deleteFromNewColorList}
 			/>
 		</div>

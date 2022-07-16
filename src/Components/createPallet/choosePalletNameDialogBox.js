@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
 	Button,
 	Dialog,
@@ -47,6 +48,7 @@ export default function ChoosePalletNameDialogBox({
 }) {
 	const [palletName, setPalletName] = useState("");
 	const [palletEmoji, setPalletEmoji] = useState("");
+	const navigate = useNavigate();
 
 	//add a validation rule for TextValidator
 	useEffect(() => {
@@ -70,6 +72,7 @@ export default function ChoosePalletNameDialogBox({
 	function submitClickHandler() {
 		updateColorPallet(palletName, palletEmoji); //send picked name and emoji to createPallet component
 		handleClickOpenClose(); //close
+		navigate(-1);
 	}
 	return (
 		<div className="ChoosePalletNameDialogBox">
