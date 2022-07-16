@@ -6,6 +6,8 @@ import seedColors from "./seedColors";
 import ColorBoxes from "./Components/colorBoxes";
 import ColorShades from "./Components/colorShades";
 import CreatePallet from "./Components/createPallet";
+
+//Application function
 export default function App(props) {
 	const [colorPallets, setColorPallets] = useState(seedColors);
 	const PalletComponentWrapper = () => {
