@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import Pallet from "./Components/pallet";
 import PalletList from "./Components/palletList";
@@ -8,8 +8,21 @@ import ColorShades from "./Components/colorShades";
 import CreatePallet from "./Components/createPallet/createPallet";
 
 //Application function
-export default function App(props) {
-	const [colorPallets, setColorPallets] = useState(seedColors);
+export default function App() {
+	const savedColorPallet = JSON.parse(
+		window.localStorage.getItem("colorPallets")
+	);
+	const [colorPallets, setColorPallets] = useState(
+		savedColorPallet | (savedColorPallet.length > 0)
+			? savedColorPallet
+			: seedColors
+	);
+
+	// this will set local storage on initial render and when ever colorPallets changes.
+	useEffect(() => {
+		window.localStorage.setItem("colorPallets", JSON.stringify(colorPallets));
+	}, [colorPallets]);
+
 	const PalletComponentWrapper = () => {
 		const { id } = useParams();
 		const pallet = colorPallets.find((pallet) => pallet.id === id);
@@ -19,11 +32,20 @@ export default function App(props) {
 		const { color } = useParams();
 		return <ColorShades colorName={color} />;
 	};
+
 	return (
 		<div>
 			<div className="App-bg" />
 			<Routes>
-				<Route path="/" element={<PalletList colorPallets={colorPallets} />} />
+				<Route
+					path="/"
+					element={
+						<PalletList
+							setColorPallets={setColorPallets}
+							colorPallets={colorPallets}
+						/>
+					}
+				/>
 				<Route
 					path="/createPallet"
 					element={

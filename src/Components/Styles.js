@@ -222,7 +222,7 @@ const ColorShadeDiv = styled.div(() => ({
 const MiniPalletPaper = muiStyled(Paper)((props) => {
 	return {
 		...props.theme.typography.body2,
-		padding: props.theme.spacing(1),
+		padding: props.theme.spacing(1, 1, 0, 1),
 		textAlign: "center",
 		color: props.theme.palette.text.secondary,
 		overflow: "Hidden",
@@ -241,10 +241,13 @@ const MiniPalletPaper = muiStyled(Paper)((props) => {
 		},
 
 		".MiniPallet-name": {
+			justifySelf: "start",
+			marginLeft:'8px',
 			color: "#000",
 		},
-		".MiniPallet-icon": {
+		".MiniPallet-emoji": {
 			fontSize: "18px",
+			justifySelf: "start",
 		},
 		".MiniPallet-colors": {
 			display: "grid",
@@ -260,9 +263,11 @@ const MiniPalletPaper = muiStyled(Paper)((props) => {
 			},
 		},
 		".MiniPallet-title": {
-			display: "flex",
-			justifyContent: "space-between",
-			padding: "1rem 0.5rem 0 0.5rem",
+			display: "grid",
+			gridTemplateColumns: "4fr 1fr 1fr",
+			alignItems: "center",
+			// justifyContent: "space-between",
+			padding: "0rem 0rem 0 0rem",
 		},
 	};
 });
