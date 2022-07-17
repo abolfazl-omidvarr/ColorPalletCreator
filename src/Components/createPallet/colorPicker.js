@@ -1,39 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Stack, Button, Box } from "@mui/material";
-import { styled } from "@mui/system";
+import { Stack, Box } from "@mui/material";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import chroma from "chroma-js";
 import { ChromePicker } from "react-color";
+import { colorPickerStyleSx, ColorPickerButton } from "./style";
 
-//styling
-const PickerButtonStack = styled(Stack)({
-	width: "100%",
-	flexDirection: "row",
-	marginBottom: "0.5rem",
-	gap: "0.5rem",
-});
-const ColorPickerBox = styled(Box)({
-	display: "grid",
-	width: "300px",
-	justifyItems: "center",
-});
-const ColorPickerButton = styled(Button)((props) => ({
-	width: props.width,
-	height: "2rem",
-	backgroundColor: props.bgcolor ? props.bgcolor : "#000",
-	padding: props.padding,
-	color: props.bgcolor && chroma(props.bgcolor).luminance() > 0.2 && "#000",
-	fontWeight: "bold",
-	"&:hover": {
-		backgroundColor: props.bgcolor ? props.bgcolor : "#000",
-	},
-}));
-//end of styling
-
-export default function ColorPicker({
-	newColors,
-	setNewColors,
-}) {
+export default function ColorPicker({ newColors, setNewColors }) {
 	const [colorCodes, setColorCodes] = useState("");
 	const [colorName, setColorName] = useState("");
 
@@ -53,8 +24,8 @@ export default function ColorPicker({
 		setNewColors([...newColors, { color: colorCodes.hex, name: colorName }]);
 	}
 	return (
-		<ColorPickerBox>
-			<PickerButtonStack>
+		<Box sx={colorPickerStyleSx.colorPickerBox}>
+			<Stack sx={colorPickerStyleSx.pickerButtonStack}>
 				<ColorPickerButton
 					onClick={() => setNewColors([])}
 					variant="contained"
@@ -71,7 +42,7 @@ export default function ColorPicker({
 				>
 					Random
 				</ColorPickerButton>
-			</PickerButtonStack>
+			</Stack>
 			<ChromePicker
 				width={"100%"}
 				color={colorCodes}
@@ -102,6 +73,6 @@ export default function ColorPicker({
 					Add Color
 				</ColorPickerButton>
 			</ValidatorForm>
-		</ColorPickerBox>
+		</Box>
 	);
 }

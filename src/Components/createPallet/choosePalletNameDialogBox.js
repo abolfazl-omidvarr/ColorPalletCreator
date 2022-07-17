@@ -12,33 +12,12 @@ import {
 } from "@mui/material";
 import Picker from "emoji-picker-react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { dialogStyleSX } from "./style";
 
 //slide transition for dialog box
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
-
-// styling
-const dialogStyleSX = {
-	DialogTitle: {
-		width: "100%",
-		mt: 8,
-		fontFamily: '"Roboto Condensed", sans-serif',
-	},
-	ValidatorFormBox: {
-		position: "absolute",
-		top: "1rem",
-		right: "1rem",
-		display: "flex",
-		gap: "1rem",
-		fontFamily: '"Roboto Condensed", sans-serif',
-	},
-	PalletEmojiTypo: {
-		m: "20px 0px",
-		fontFamily: '"Roboto Condensed", sans-serif',
-	},
-};
-//end of styling
 
 export default function ChoosePalletNameDialogBox({
 	open,
