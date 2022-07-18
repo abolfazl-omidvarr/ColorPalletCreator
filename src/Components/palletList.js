@@ -90,16 +90,14 @@ const GridContainer = muiStyled(Grid)(props => ({
   }
 }));
 
-function PalletList({ colorPallets, setColorPallets }) {
+export default function PalletList({ colorPallets, setColorPallets }) {
   return (
     <PalletListBox>
       <nav>
         <p>Color Picker created by Abolfazl omidvar</p>
         <Link to={'/createPallet'}>Create a Pallet</Link>
       </nav>
-      <PalletListContainer
-        className="masked-overflow"
-      >
+      <PalletListContainer className='masked-overflow'>
         <GridContainer container>
           {colorPallets.map((colorObj, i) => (
             <MiniPallet
@@ -115,4 +113,3 @@ function PalletList({ colorPallets, setColorPallets }) {
     </PalletListBox>
   );
 }
-export default PalletList;

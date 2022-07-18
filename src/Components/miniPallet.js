@@ -35,9 +35,8 @@ export default function MiniPallet({ setColorPallets, colorObj, tDelay, id }) {
     <CSSTransition
       in={!deleteMiniPallet}
       timeout={300}
-      classNames="miniPalletDelete"
+      classNames='miniPalletDelete'
       unmountOnExit
-      onEnter={() => console.log('enter')}
       onExit={() => setColorPalletsOnExit()}
       nodeRef={nodeRef}
     >
@@ -45,19 +44,19 @@ export default function MiniPallet({ setColorPallets, colorObj, tDelay, id }) {
         <MiniPalletPaper
           onClick={() => handleMiniPalletClick(id)}
           sx={{ transform: show ? 'scale(1)' : 'scale(0)' }}
-          bgcolor="#f4efe4"
+          bgcolor='#f4efe4'
         >
-          <div className="MiniPallet-colors">
+          <div className='MiniPallet-colors'>
             {colorObj.colors.map(color => (
               <MiniPalletColorDiv key={color.color} bgcolor={color.color} />
             ))}
           </div>
-          <div className="MiniPallet-title">
-            <div className="MiniPallet-name">{colorObj.paletteName}</div>
-            <div className="MiniPallet-emoji">{colorObj.emoji}</div>
+          <div className='MiniPallet-title'>
+            <div className='MiniPallet-name'>{colorObj.paletteName}</div>
+            <div className='MiniPallet-emoji'>{colorObj.emoji}</div>
             <IconButton
               id={colorObj.id}
-              size="small"
+              size='small'
               sx={{
                 '&:hover': {
                   backgroundColor: 'transparent',

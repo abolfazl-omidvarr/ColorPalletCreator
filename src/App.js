@@ -35,10 +35,10 @@ export default function App() {
   };
   return (
     <div>
-      <div className="App-bg" />
+      <div className='App-bg' />
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <PalletList
               setColorPallets={setColorPallets}
@@ -47,7 +47,7 @@ export default function App() {
           }
         />
         <Route
-          path="/createPallet"
+          path='/createPallet'
           element={
             <CreatePallet
               colorPallets={colorPallets}
@@ -55,12 +55,12 @@ export default function App() {
             />
           }
         />
-        <Route path="test" element={<Test />} />
-        <Route path=":id" element={<PalletComponentWrapper />}>
-          <Route path="all-color" element={<ColorBoxes />} />
-          <Route path=":color" element={<ColorShadesWrapper />} />
+        <Route path='test' element={<Test />} />
+        <Route path=':id' element={<PalletComponentWrapper />}>
+          <Route path='all-color' element={<ColorBoxes />} />
+          <Route path=':color' element={<ColorShadesWrapper />} />
         </Route>
-        <Route path="*" element={<h1>404 NOT FOUND</h1>}></Route>
+        <Route path='*' element={<h1>404 NOT FOUND</h1>}></Route>
       </Routes>
     </div>
   );

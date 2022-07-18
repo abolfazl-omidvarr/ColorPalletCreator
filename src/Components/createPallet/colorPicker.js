@@ -26,16 +26,16 @@ export default function ColorPicker({ newColors, setNewColors }) {
       <Stack sx={colorPickerStyleSx.pickerButtonStack}>
         <ColorPickerButton
           onClick={() => setNewColors([])}
-          variant="contained"
-          bgcolor="#F95656"
+          variant='contained'
+          bgcolor='#F95656'
           width={'50%'}
         >
           Clear
         </ColorPickerButton>
         <ColorPickerButton
           onClick={() => 0}
-          variant="contained"
-          bgcolor="#398FF4"
+          variant='contained'
+          bgcolor='#398FF4'
           width={'50%'}
         >
           Random
@@ -51,9 +51,9 @@ export default function ColorPicker({ newColors, setNewColors }) {
       <ValidatorForm ref={useRef()} onSubmit={submitClickHandler}>
         <TextValidator
           sx={{ margin: '2rem' }}
-          label="Color Name"
+          label='Color Name'
           onChange={e => setColorName(e.target.value)} //setColorName execute as user types
-          name="ColorName"
+          name='ColorName'
           value={colorName}
           validators={['required', 'isUniqueColorName', 'isUniqueColorCode']} //list of val.. rules
           errorMessages={[
@@ -63,8 +63,8 @@ export default function ColorPicker({ newColors, setNewColors }) {
           ]}
         />
         <ColorPickerButton
-          variant="contained"
-          type="submit"
+          variant='contained'
+          type='submit'
           bgcolor={colorCodes.hex}
           width={'100%'}
         >
