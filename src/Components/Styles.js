@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { styled as muiStyled } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import Paper from '@mui/material/Paper';
+import breakpoints from '../breakPoints';
 
 const ColorBoxDiv = styled.div(props => ({
   backgroundColor: props.bgColor,
@@ -107,12 +108,36 @@ const ColorBoxDiv = styled.div(props => ({
   '.copy-msg-container-active': {
     zIndex: '25',
     opacity: '1'
+  },
+  ['@media (max-width: 600px)']: {
+    height: props.singleColor ? '100%' : '60px',
+    '.more': {
+      opacity: 1
+    }
   }
 }));
+
+const PalletColorsDiv = styled.div(() => ({
+  display: 'grid',
+  gridTemplateColumns: ' repeat(4,1fr)',
+  gridTemplateRows: 'auto',
+  backgroundColor: '#00000044',
+  height: '89vh',
+  overflowY: 'scroll',
+  ['@media (max-width: 900px)']: {
+    gridTemplateColumns: ' repeat(2,1fr)',
+    gridTemplateRows: 'auto'
+  },
+  ['@media (max-width: 600px)']: {
+    gridTemplateColumns: ' repeat(1,1fr)',
+    gridTemplateRows: 'auto'
+  }
+}));
+
 const PalletFooterDiv = styled.div(() => ({
   position: 'absolute',
   width: '100%',
-  height: '100px',
+  height: '5vh',
   background: 'linear-gradient(to right, #ddefbb, #ffeeee)',
   p: {
     transform: 'translate(1%, 40%)',
@@ -120,105 +145,16 @@ const PalletFooterDiv = styled.div(() => ({
     fontWeight: 'bold'
   }
 }));
-const PalletColorsDiv = styled.div(() => ({
-  display: 'grid',
-  gridTemplateColumns: ' repeat(5,1fr)',
-  gridTemplateRows: ' repeat(4,1fr)',
-  backgroundColor: '#00000044',
-  height: '89%'
-}));
-const ColorSliderDiv = styled.div(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0.5rem',
-  label: {
-    padding: '1rem 0'
-  },
 
-  'input[type="range"': {
-    WebkitAppearance: 'none',
-    width: '200px',
-    height: '5px',
-    background: 'rgba(255, 255, 255, 0.6)',
-    borderRadius: '5px',
-    backgroundImage: 'linear-gradient(#ff4500, #ff4500)',
-    backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat'
-  },
-
-  /* Input Thumb */
-  'input[type="range"::-webkit-slider-thumb': {
-    WebkitAppearance: 'none',
-    height: '15px',
-    width: '15px',
-    borderRadius: '50%',
-    background: '#9b4d35',
-    cursor: 'ew-resize',
-    boxShadow: '0 0 2px 0 #555',
-    transition: 'background 0.3s ease-in-out'
-  },
-
-  'input[type="range"::-moz-range-thumb': {
-    WebkitAppearance: 'none',
-    height: '10px',
-    width: '10px',
-    borderRadius: '50%',
-    background: '#ff4500',
-    cursor: 'ew-resize',
-    boxShadow: '0 0 2px 0 #555',
-    transition: 'background 0.3s ease-in-out'
-  },
-
-  'input[type="range"::-ms-thumb': {
-    WebkitAppearance: 'none',
-    height: '10px',
-    width: '10px',
-    borderRadius: '50%',
-    background: '#ff4500',
-    cursor: 'ew-resize',
-    boxShadow: '0 0 2px 0 #555',
-    transition: 'background 0.3s ease-in-out'
-  },
-
-  'input[type="range"::-webkit-slider-thumb:hover': {
-    background: '#ff0200'
-  },
-
-  'input[type="range"::-moz-range-thumb:hover': {
-    background: '#ff0200'
-  },
-
-  'input[type="range"::-ms-thumb:hover': {
-    background: '#ff0200'
-  },
-
-  /* Input Track */
-  'input[type="range"::-webkit-slider-runnable-track': {
-    WebkitAppearance: 'none',
-    boxShadow: 'none',
-    border: 'none',
-    background: 'transparent'
-  },
-
-  'input[type="range"::-moz-range-track': {
-    WebkitAppearance: 'none',
-    boxShadow: 'none',
-    border: 'none',
-    background: 'transparent'
-  },
-
-  'input[type="range"::-ms-track': {
-    WebkitAppearance: 'none',
-    boxShadow: 'none',
-    border: 'none',
-    background: 'transparent'
-  }
-}));
 const ColorShadeDiv = styled.div(() => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(5,1fr)',
-  height: '90%'
+  height: '90vh',
+  [breakpoints.sizeUp('md')]:{
+    gridTemplateColumns: 'repeat(2,1fr)',
+  }
 }));
+
 const MiniPalletPaper = muiStyled(Paper)(props => {
   return {
     ...props.theme.typography.body2,
@@ -278,16 +214,19 @@ const MiniPalletColorDiv = muiStyled(Box)(props => ({
   height: '100%',
   backgroundColor: props.bgcolor
 }));
+
 const PalletNav = styled.nav(() => ({
   display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
   background: 'linear-gradient(to right,#ddefbb,#ffeeee)',
+  height: '6vh',
   '.NavBar-back': {
     display: 'grid',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '40px',
-    height: '40px',
+    width: '28px',
+    height: '28px',
     borderRadius: '50%',
     transition: 'all 0.2s',
     backgroundColor: '#ff7979',
@@ -298,6 +237,9 @@ const PalletNav = styled.nav(() => ({
       boxShadow:
         'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
       backgroundColor: '#eb4d4b'
+    },
+    [breakpoints.sizeUp('md')]: {
+      display: 'none'
     }
   },
   select: {
@@ -324,12 +266,14 @@ const PalletNav = styled.nav(() => ({
     }
   }
 }));
+
 const CreatePalletDiv = styled.div(props => ({
   overflow: 'hidden',
   position: 'relative',
   height: '100vh',
   backgroundColor: 'blue'
 }));
+
 const ColorPickerDiv = styled.div(props => ({
   display: 'grid',
   justifyContent: 'center',
@@ -337,11 +281,11 @@ const ColorPickerDiv = styled.div(props => ({
   width: '100%',
   height: '100%'
 }));
+
 export {
   ColorBoxDiv,
   PalletFooterDiv,
   PalletColorsDiv,
-  ColorSliderDiv,
   ColorShadeDiv,
   MiniPalletPaper,
   MiniPalletColorDiv,

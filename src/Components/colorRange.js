@@ -1,35 +1,20 @@
-import React, { useRef, useEffect } from 'react';
-import { ColorSliderDiv } from './Styles';
+
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
 export default function ColorSlider({ setLevel }) {
-  const slider = useRef();
-  const sliderLabel = useRef();
-
-  function onChangeHandler(e) {
-    setLevel(e.target.value);
-  }
-
-  useEffect(() => {
-    slider.current.defaultValue = 500;
-  }, []);
-
-  useEffect(() => {
-    sliderLabel.current.innerHTML = `Level: ${slider.current.value}`;
-  });
-
   return (
-    <ColorSliderDiv>
-      <label ref={sliderLabel} htmlFor='#levelSlider'>
-        500
-      </label>
-      <input
-        ref={slider}
-        id='#levelSlider'
-        type={'range'}
-        min='100'
-        step='100'
-        max='1000'
-        onChange={onChangeHandler}
+    <Box sx={{ width: 150 }}>
+      <Slider
+        aria-label='degree'
+        defaultValue={500}
+        valueLabelDisplay='off'
+        step={100}
+        marks
+        min={100}
+        max={900}
+        onChange={e => setLevel(e.target.value)}
       />
-    </ColorSliderDiv>
+    </Box>
   );
 }

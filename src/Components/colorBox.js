@@ -26,10 +26,13 @@ export default function ColorBox({ color, name, singleColor }) {
       MORE
     </button>
   ) : null;
-
   return (
     <CopyToClipboard text={color} onCopy={() => onCopyHandler()}>
-      <ColorBoxDiv bgColor={color} lum={luminance > 0.2 ? '#000' : '#fff'}>
+      <ColorBoxDiv
+        singleColor={singleColor}
+        bgColor={color}
+        lum={luminance > 0.2 ? '#000' : '#fff'}
+      >
         <div
           className={`copy-overlay ${copied ? 'copy-overlay-active' : ''}`}
           style={{ backgroundColor: color }}

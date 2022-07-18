@@ -24,7 +24,7 @@ export default function ColorShades({ colorName }) {
   });
   const colorBoxes = colorShades[type].map(color => {
     return (
-      <ColorBox key={color} color={color} name={null} singleColor={true} />
+      <ColorBox key={color} color={color} name={null} singleColor />
     );
   });
   return <ColorShadeDiv>{colorBoxes}</ColorShadeDiv>;

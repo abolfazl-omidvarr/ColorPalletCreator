@@ -11,6 +11,7 @@ import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import breakpoints from '../breakPoints';
 
 export default function NavBar({ setLevel, upperSetType, showSlider }) {
   const back = useNavigate();
@@ -33,6 +34,7 @@ export default function NavBar({ setLevel, upperSetType, showSlider }) {
   function backClickHandler() {
     back(-1);
   }
+  console.log();
   return (
     <PalletNav>
       <div className='NavBar-BackSlider-container'>
@@ -41,7 +43,15 @@ export default function NavBar({ setLevel, upperSetType, showSlider }) {
         </div>
         {showSlider ? <ColorSlider setLevel={setLevel} /> : null}
       </div>
-      <Box sx={{ width: 170, m: 1 }}>
+      <Box
+        sx={{
+          width: 160,
+          m: 1,
+          [breakpoints.sizeUp('sm')]: {
+            width: 100
+          }
+        }}
+      >
         <FormControl fullWidth>
           <InputLabel id='code-type-select'>CodeType</InputLabel>
           <Select
@@ -50,6 +60,9 @@ export default function NavBar({ setLevel, upperSetType, showSlider }) {
             value={type}
             label='CodeType'
             onChange={selectChangeHandler}
+            sx={{
+              height: '30px'
+            }}
           >
             <MenuItem key={'hex'} value={'hex'}>
               HEX: #000000

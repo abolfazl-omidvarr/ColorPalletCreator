@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { styled as muiStyled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import breakPoints from '../breakPoints';
 
 const PalletListContainer = styled.div`
   --scrollbar-width: 8px;
@@ -28,6 +29,12 @@ const PalletListContainer = styled.div`
   mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
   mask-position: 0 0, 100% 0;
   mask-repeat: no-repeat, no-repeat;
+  ${breakPoints.sizeUp('md')} {
+    height: 90%;
+  }
+  ${breakPoints.sizeUp('sm')} {
+    height: 98%;
+  }
 `;
 const PalletListBox = styled(Box)(props => ({
   '-webkit-scrollbar-track': {

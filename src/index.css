@@ -14,6 +14,9 @@ body {
   height: 100vh;
   display: grid;
 }
+#root {
+  overflow: hidden;
+}
 .App-bg {
   position: fixed;
   top: 0;
