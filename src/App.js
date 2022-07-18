@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useParams, useLocation } from 'react-router-dom';
-import Pallet from './Components/pallet';
-import PalletList from './Components/palletList';
+import Pallet from './Components/pallet/pallet';
+import PalletList from './Components/pallet_list/palletList';
 import seedColors from './seedColors';
-import ColorBoxes from './Components/colorBoxes';
-import ColorShades from './Components/colorShades';
-import CreatePallet from './Components/createPallet/createPallet';
-import Test from './test';
+import ColorBoxes from './Components/pallet/colorBoxes';
+import ColorShades from './Components/pallet/colorShades';
+import CreatePallet from './Components/create_pallet/createPallet';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 //Application function
@@ -55,7 +54,6 @@ export default function App() {
             />
           }
         />
-        <Route path='test' element={<Test />} />
         <Route path=':id' element={<PalletComponentWrapper />}>
           <Route path='all-color' element={<ColorBoxes />} />
           <Route path=':color' element={<ColorShadesWrapper />} />

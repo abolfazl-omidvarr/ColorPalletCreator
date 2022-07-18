@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { styled as muiStyled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import breakPoints from '../breakPoints';
+import breakPoints from '../../breakPoints';
 
 const PalletListContainer = styled.div`
   --scrollbar-width: 8px;

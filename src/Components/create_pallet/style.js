@@ -1,7 +1,9 @@
-import { styled } from '@mui/material/styles';
+import { styled as muiStyled } from '@mui/material/styles';
+import styled from '@emotion/styled';
 import { IconButton, Box, Button } from '@mui/material';
 import chroma from 'chroma-js';
 import MuiAppBar from '@mui/material/AppBar';
+import breakPoints from '../../breakPoints';
 
 //sx and static styles
 const dialogStyleSX = {
@@ -111,7 +113,7 @@ const colorPickerStyleSx = {
   }
 };
 //functional and active styles created with mui and emotion styling system
-const TrashIcon = styled(IconButton)(props => ({
+const TrashIcon = muiStyled(IconButton)(props => ({
   color: props.luminance < 0.1 ? '#fff' : '',
   position: 'absolute',
   bottom: '5px',
@@ -127,7 +129,7 @@ const TrashIcon = styled(IconButton)(props => ({
   }
 }));
 
-const ShakingDraggableColorBox = styled(Box)(props => ({
+const ShakingDraggableColorBox = muiStyled(Box)(props => ({
   position: 'relative',
   transition: props.transition,
   transform: props.transform,
@@ -152,7 +154,7 @@ const ShakingDraggableColorBox = styled(Box)(props => ({
     '100%': { transform: 'rotate(0deg) skew(2deg)' }
   }
 }));
-const DrawerMain = styled('main', {
+const DrawerMain = muiStyled('main', {
   shouldForwardProp: prop => prop !== 'open'
 })(({ theme, open }) => ({
   flexGrow: '1',
@@ -171,7 +173,7 @@ const DrawerMain = styled('main', {
     marginLeft: 0
   })
 }));
-const AppBar = styled(MuiAppBar, {
+const AppBar = muiStyled(MuiAppBar, {
   shouldForwardProp: prop => prop !== 'open'
 })(({ theme, open }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
@@ -191,7 +193,7 @@ const AppBar = styled(MuiAppBar, {
   })
 }));
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+const DrawerHeader = muiStyled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
@@ -200,14 +202,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end'
 }));
 
-const DrawerButton = styled(Button)(props => ({
+const DrawerButton = muiStyled(Button)(props => ({
   width: '6rem',
   backgroundColor: props.bgcolor,
   '&:hover': {
     backgroundColor: props.bgcolor
   }
 }));
-const ColorPickerButton = styled(Button)(props => ({
+const ColorPickerButton = muiStyled(Button)(props => ({
   width: props.width,
   height: '2rem',
   backgroundColor: props.bgcolor ? props.bgcolor : '#000',
@@ -218,7 +220,13 @@ const ColorPickerButton = styled(Button)(props => ({
     backgroundColor: props.bgcolor ? props.bgcolor : '#000'
   }
 }));
-
+const ColorPickerDiv = styled.div(props => ({
+  display: 'grid',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '100%'
+}));
 export {
   dialogStyleSX,
   draggableColorBoxSx,
@@ -230,5 +238,6 @@ export {
   DrawerHeader,
   DrawerButton,
   colorPickerStyleSx,
-  ColorPickerButton
+  ColorPickerButton,
+  ColorPickerDiv
 };

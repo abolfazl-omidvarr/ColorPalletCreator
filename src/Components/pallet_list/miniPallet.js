@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { MiniPalletPaper, MiniPalletColorDiv } from './Styles';
+import { MiniPalletPaper, MiniPalletColorDiv } from './style';
 import { IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid';
 

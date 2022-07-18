@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ColorPickerDiv } from '../Styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -29,7 +28,8 @@ import {
   DrawerMain,
   AppBar,
   DrawerHeader,
-  DrawerButton
+  DrawerButton,
+  ColorPickerDiv
 } from './style';
 
 export default function PalletCreateDrawer({

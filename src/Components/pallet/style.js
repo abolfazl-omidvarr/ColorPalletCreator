@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { styled as muiStyled } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import Paper from '@mui/material/Paper';
-import breakpoints from '../breakPoints';
+import breakpoints from '../../breakPoints';
 
 const ColorBoxDiv = styled.div(props => ({
   backgroundColor: props.bgColor,
@@ -109,7 +109,7 @@ const ColorBoxDiv = styled.div(props => ({
     zIndex: '25',
     opacity: '1'
   },
-  ['@media (max-width: 600px)']: {
+  [breakpoints.sizeUp('sm')]: {
     height: props.singleColor ? '100%' : '60px',
     '.more': {
       opacity: 1
@@ -124,11 +124,11 @@ const PalletColorsDiv = styled.div(() => ({
   backgroundColor: '#00000044',
   height: '89vh',
   overflowY: 'scroll',
-  ['@media (max-width: 900px)']: {
+  [breakpoints.sizeUp('md')]: {
     gridTemplateColumns: ' repeat(2,1fr)',
     gridTemplateRows: 'auto'
   },
-  ['@media (max-width: 600px)']: {
+  [breakpoints.sizeUp('sm')]: {
     gridTemplateColumns: ' repeat(1,1fr)',
     gridTemplateRows: 'auto'
   }
@@ -150,8 +150,8 @@ const ColorShadeDiv = styled.div(() => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(5,1fr)',
   height: '90vh',
-  [breakpoints.sizeUp('md')]:{
-    gridTemplateColumns: 'repeat(2,1fr)',
+  [breakpoints.sizeUp('md')]: {
+    gridTemplateColumns: 'repeat(2,1fr)'
   }
 }));
 
@@ -194,7 +194,7 @@ const MiniPalletPaper = muiStyled(Paper)(props => {
       borderRadius: '10px',
       boxShadow:
         'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;',
-      '@media (max-width: 900px)': {
+      [breakpoints.sizeUp('md')]: {
         height: '250px'
       }
     },
@@ -202,7 +202,6 @@ const MiniPalletPaper = muiStyled(Paper)(props => {
       display: 'grid',
       gridTemplateColumns: '4fr 1fr 1fr',
       alignItems: 'center',
-      // justifyContent: "space-between",
       padding: '0rem 0rem 0 0rem'
     }
   };

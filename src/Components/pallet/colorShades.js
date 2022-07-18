@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { ColorShadeDiv } from './Styles';
+import { ColorShadeDiv } from './style';
 import { useOutletContext } from 'react-router-dom';
-import generatePallet, { colorLevels } from '../colorHelper';
+import generatePallet, { colorLevels } from '../../colorHelper';
 import ColorBox from './colorBox';
 
 export default function ColorShades({ colorName }) {

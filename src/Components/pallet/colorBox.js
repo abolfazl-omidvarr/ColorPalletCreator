@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { ColorBoxDiv } from './Styles';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import chroma from 'chroma-js';
+import { ColorBoxDiv } from './style';
 
 export default function ColorBox({ color, name, singleColor }) {
   const history = useNavigate();
   const [copied, setCopied] = useState(false);
   const { pathname } = useLocation();
 
-  const luminance = chroma(color).luminance();
+  const luminance = chroma(color).luminance(); //extract color lightness
 
   function onCopyHandler() {
     setCopied(true);
@@ -17,10 +17,15 @@ export default function ColorBox({ color, name, singleColor }) {
       setCopied(false);
     }, 1200);
   }
+
   function moreButtonClickHandler(e) {
     e.stopPropagation();
-    history(`/${pathname.split('/')[1]}/${name.split(' ')[0].toLowerCase()}`);
+    const address = `/${pathname.split('/')[1]}/${name
+      .split(' ')[0]
+      .toLowerCase()}`;
+    history(address);
   }
+  //if in colorShades Component ? show more button : hide show button
   const moreButton = !singleColor ? (
     <button onClick={e => moreButtonClickHandler(e)} className='more'>
       MORE

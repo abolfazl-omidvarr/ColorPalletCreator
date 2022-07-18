@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { PalletColorsDiv } from './Styles';
-import generatePallet from '../colorHelper';
+import { PalletColorsDiv } from './style';
+import generatePallet from '../../colorHelper';
 import ColorBox from './colorBox';
 export default function ColorBoxes() {
   const oL = useOutletContext();
