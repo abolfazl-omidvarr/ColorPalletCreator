@@ -2,6 +2,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+
+//this component is just a simple slider provided by mui
 export default function ColorSlider({ setLevel }) {
   return (
     <Box sx={{ width: 150 }}>

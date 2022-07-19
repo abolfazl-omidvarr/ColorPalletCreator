@@ -45,30 +45,13 @@ export default function DraggableColorBox({
         }}
         luminance={luminance}
       >
-        <DeleteIcon
-          sx={{
-            [breakPoints.sizeUp('sm')]: {
-              fontSize: '1rem'
-            }
-          }}
-        />
+        <DeleteIcon sx={draggableColorBoxSx.deleteIcon} />
       </TrashIcon>
       <Typography
         variant='h6'
         sx={{
-          color: luminance > 0.3 ? '#000' : '#fff',
-          position: 'absolute',
-          bottom: '0',
-          left: '5px',
-          [breakPoints.sizeUp('lg')]: {
-            fontSize: '1rem'
-          },
-          [breakPoints.sizeUp('md')]: {
-            fontSize: '0.9rem'
-          },
-          [breakPoints.sizeUp('sm')]: {
-            fontSize: '0.8rem'
-          }
+          ...draggableColorBoxSx.name,
+          color: luminance > 0.3 ? '#000' : '#fff'
         }}
       >
         {color.name}
@@ -79,14 +62,7 @@ export default function DraggableColorBox({
         {...attributes}
         {...listeners}
       >
-        <OpenWithIcon
-          sx={{
-            fontSize: '2rem',
-            [breakPoints.sizeUp('sm')]: {
-              fontSize: '1rem'
-            }
-          }}
-        />
+        <OpenWithIcon className='dragBox-icon' />
       </Box>
     </ShakingDraggableColorBox>
   );

@@ -2,17 +2,18 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { MiniPalletPaper, MiniPalletColorDiv } from './style';
 import { IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import { MiniPalletPaper, MiniPalletColorDiv } from './palletListStyle';
 
 //mini pallet component function:
 export default function MiniPallet({ setColorPallets, colorObj, tDelay, id }) {
   const History = useNavigate();
 
   //sate and Effect hook for show animation on startUp
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false); //show miniPallets by delay state hook
   const [deleteMiniPallet, setDeleteMiniPallet] = useState(false);
+  const nodeRef = React.useRef(null);
 
   useEffect(() => {
     setTimeout(function() {
@@ -20,9 +21,11 @@ export default function MiniPallet({ setColorPallets, colorObj, tDelay, id }) {
     }, tDelay);
   }, []);
 
+  //navigate to clicked pallet
   function handleMiniPalletClick(id) {
     History(`${id}/all-color`);
   }
+  //delete pallet from color pallets list on unmount by delay
   function setColorPalletsOnExit() {
     setTimeout(function() {
       setColorPallets(prevPallets =>
@@ -30,7 +33,7 @@ export default function MiniPallet({ setColorPallets, colorObj, tDelay, id }) {
       );
     }, 300);
   }
-  const nodeRef = React.useRef(null);
+
   return (
     <CSSTransition
       in={!deleteMiniPallet}

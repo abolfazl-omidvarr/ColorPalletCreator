@@ -4,20 +4,22 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import chroma from 'chroma-js';
 import { ColorBoxDiv } from './style';
 
-export default function ColorBox({ color, name, singleColor }) {
+export default function ColorBox({ color, name, colorShades }) {
   const history = useNavigate();
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState(false); //show and hide COPIED screen state hook
   const { pathname } = useLocation();
 
   const luminance = chroma(color).luminance(); //extract color lightness
 
+  //show and hide COPIED screen
   function onCopyHandler() {
     setCopied(true);
     setTimeout(function() {
       setCopied(false);
-    }, 1200);
+    }, 800);
   }
 
+  //navigate to shades component of clicked color
   function moreButtonClickHandler(e) {
     e.stopPropagation();
     const address = `/${pathname.split('/')[1]}/${name
@@ -26,7 +28,7 @@ export default function ColorBox({ color, name, singleColor }) {
     history(address);
   }
   //if in colorShades Component ? show more button : hide show button
-  const moreButton = !singleColor ? (
+  const moreButton = !colorShades ? (
     <button onClick={e => moreButtonClickHandler(e)} className='more'>
       MORE
     </button>
@@ -34,7 +36,7 @@ export default function ColorBox({ color, name, singleColor }) {
   return (
     <CopyToClipboard text={color} onCopy={() => onCopyHandler()}>
       <ColorBoxDiv
-        singleColor={singleColor}
+        colorShades={colorShades}
         bgColor={color}
         lum={luminance > 0.2 ? '#000' : '#fff'}
       >
@@ -58,5 +60,5 @@ export default function ColorBox({ color, name, singleColor }) {
         <button className='copy'>Copy</button>
       </ColorBoxDiv>
     </CopyToClipboard>
-  );
-}
+  ); //end of return
+} //end of function

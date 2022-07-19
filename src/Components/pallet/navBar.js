@@ -14,25 +14,27 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import breakpoints from '../../breakPoints';
 
 export default function NavBar({ setLevel, upperSetType, showSlider }) {
-  const back = useNavigate();
-  const [type, setType] = useState('hex');
-  const [snackOpen, setSnackOpen] = useState(false);
-  function selectChangeHandler(e) {
-    const type = e.target.value;
-    upperSetType(type);
-    setType(type);
+  const navigate = useNavigate();
+  const [type, setType] = useState('hex'); //code type state hook
+  const [snackOpen, setSnackOpen] = useState(false); //show hide snack bar state hook
 
-    setSnackOpen(true);
+  //select menu change function handler
+  function selectChangeHandler(e) {
+    const type = e.target.value; //extract code type from select
+    upperSetType(type); //set code type of parent component
+    setType(type); //set code type
+
+    setSnackOpen(true); //show snack bar
 
     setTimeout(function() {
       setSnackOpen(false);
-    }, 2000);
+    }, 2000); //hide snack bar after 2 sec
   }
   function handleClose() {
     setSnackOpen(false);
   }
   function backClickHandler() {
-    back(-1);
+    navigate(-1);
   }
   console.log();
   return (

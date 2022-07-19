@@ -6,11 +6,14 @@ import ColorBox from './colorBox';
 import { motion } from 'framer-motion/dist/framer-motion';
 
 export default function ColorBoxes() {
-  const oL = useOutletContext();
+  const oL = useOutletContext(); //extract Outlet props
   const modifiedColorObj = generatePallet(oL.selectedColorObj);
+
+  //show color slider in colorBoxes component
   useEffect(() => {
     oL.setShowSlider(true);
   }, []);
+
   const colorBoxes = modifiedColorObj.colors[oL.level].map(colorObj => {
     return (
       <ColorBox
@@ -25,9 +28,8 @@ export default function ColorBoxes() {
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
-      // transition={{ duration: 1 }}
     >
       <PalletColorsDiv>{colorBoxes}</PalletColorsDiv>
     </motion.div>
-  );
-}
+  ); //end of return
+} //end of function

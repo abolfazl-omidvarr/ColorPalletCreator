@@ -6,15 +6,21 @@ import ColorBox from './colorBox';
 import { motion } from 'framer-motion/dist/framer-motion';
 
 export default function ColorShades({ colorName }) {
-  const { selectedColorObj, setShowSlider, type } = useOutletContext();
-  const modifiedColorObj = generatePallet(selectedColorObj);
+  const oL = useOutletContext(); //extracting Outlet props
+  const modifiedColorObj = generatePallet(oL.selectedColorObj);
+
+  //hide color slider in colorShades component
+  useEffect(() => {
+    oL.setShowSlider(false);
+  }, []);
+
+  //an empty object, will fill later :)
   const colorShades = {
     hex: [],
     rgb: []
   };
-  useEffect(() => {
-    setShowSlider(false);
-  }, []);
+
+  //extract shades of specific color
   colorLevels.forEach(lvl => {
     if (lvl === 0) return;
     const colorLvlObj = modifiedColorObj.colors[lvl].filter(
@@ -23,16 +29,18 @@ export default function ColorShades({ colorName }) {
     colorShades.hex.push(colorLvlObj.hex);
     colorShades.rgb.push(colorLvlObj.rgb);
   });
-  const colorBoxes = colorShades[type].map(color => {
-    return <ColorBox key={color} color={color} name={null} singleColor />;
-  });
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
     >
-      <ColorShadeDiv>{colorBoxes}</ColorShadeDiv>
+      <ColorShadeDiv>
+        {colorShades[oL.type].map(color => (
+          <ColorBox key={color} color={color} name={null} colorShades />
+        ))}
+      </ColorShadeDiv>
     </motion.div>
   );
 }

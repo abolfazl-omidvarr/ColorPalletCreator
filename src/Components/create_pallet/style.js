@@ -26,13 +26,24 @@ const dialogStyleSX = {
   }
 };
 const draggableColorBoxSx = {
-  title: {
+  name: {
     position: 'absolute',
-    width: '100%',
     bottom: '0',
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '0 0.5rem'
+    left: '5px',
+    [breakPoints.sizeUp('lg')]: {
+      fontSize: '1rem'
+    },
+    [breakPoints.sizeUp('md')]: {
+      fontSize: '0.9rem'
+    },
+    [breakPoints.sizeUp('sm')]: {
+      fontSize: '0.8rem'
+    }
+  },
+  deleteIcon: {
+    [breakPoints.sizeUp('sm')]: {
+      fontSize: '1rem'
+    }
   },
   dragBox: {
     width: '40px',
@@ -52,6 +63,12 @@ const draggableColorBoxSx = {
     [breakPoints.sizeUp('sm')]: {
       width: '20px',
       height: '20px'
+    },
+    '& .dragBox-icon': {
+      fontSize: '2rem',
+      [breakPoints.sizeUp('sm')]: {
+        fontSize: '1rem'
+      }
     }
   }
 };
