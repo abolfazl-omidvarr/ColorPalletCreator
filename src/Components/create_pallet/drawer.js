@@ -10,6 +10,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import DraggableColorBox from './draggableColorBox';
 import ColorPicker from './colorPicker';
+import useWindowDimensions from './windowDimensionHook';
 import {
   closestCenter,
   DndContext,
@@ -90,7 +91,8 @@ export default function PalletCreateDrawer({
       overLay={true}
     />
   ) : null;
-
+  // const { width, height } = useWindowDimensions();
+  // console.log(width);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -122,14 +124,6 @@ export default function PalletCreateDrawer({
       >
         <DrawerHeader></DrawerHeader>
         <Box sx={drawerStyleSx.drawerBgDiv} />
-        <Typography
-          sx={drawerStyleSx.DrawerTitleTypo}
-          variant='h5'
-          align={'center'}
-          component='div'
-        >
-          Create your own pallet
-        </Typography>
         <ColorPickerDiv>
           <ColorPicker
             setNewColors={setNewColors}

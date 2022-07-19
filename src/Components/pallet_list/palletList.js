@@ -84,7 +84,12 @@ const PalletListBox = styled(Box)(props => ({
       }
     },
     '@media (max-width:600px)': {
-      display: 'none'
+      width: '88.5%',
+      padding: '1rem 1rem',
+      p: {
+        color: '#fff',
+        fontSize: '1rem'
+      }
     }
   }
 }));
@@ -101,8 +106,8 @@ export default function PalletList({ colorPallets, setColorPallets }) {
   return (
     <PalletListBox>
       <nav>
-        <p>Color Picker created by Abolfazl omidvar</p>
-        <Link to={'/createPallet'}>Create a Pallet</Link>
+        <p>Abolfazl's Color Picker</p>
+        <Link style={{color:'#badc58',cursor:'pointer'}} to={'/createPallet'}>Create a Pallet</Link>
       </nav>
       <PalletListContainer className='masked-overflow'>
         <GridContainer container>

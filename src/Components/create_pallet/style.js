@@ -48,30 +48,51 @@ const draggableColorBoxSx = {
     transform: 'translate(-50%,-50%)',
     opacity: '0.2',
     transition: 'all 0.2s',
-    cursor: 'grab'
+    cursor: 'grab',
+    [breakPoints.sizeUp('sm')]: {
+      width: '20px',
+      height: '20px'
+    }
   }
 };
-const drawerWidth = 350;
 const drawerStyleSx = {
   drawer: {
-    width: drawerWidth,
+    width: 350,
     flexShrink: 0,
+    [breakPoints.sizeUp('sm')]: {
+      width: 200
+    },
     '& .MuiDrawer-paper': {
-      width: drawerWidth,
-      boxSizing: 'border-box'
+      width: 350,
+      boxSizing: 'border-box',
+      [breakPoints.sizeUp('sm')]: {
+        width: 200
+      }
     }
   },
   DrawerNewColorsBoxContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(5,1fr)',
-    gridTemplateRows: 'repeat(4,1fr)',
+    gridTemplateColumns: 'repeat(4,1fr)',
+    gridTemplateRows: 'repeat(5,1fr)',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    [breakPoints.sizeUp('md')]: {
+      gridTemplateColumns: 'repeat(2,1fr)',
+      gridTemplateRows: 'repeat(10,1fr)'
+    },
+    [breakPoints.sizeUp('sm')]: {
+      gridTemplateColumns: 'repeat(1,1fr)',
+      gridTemplateRows: 'repeat(20,1fr)'
+    }
   },
   ButtonsDiv: {
     display: 'flex',
     gap: '1rem',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    [breakPoints.sizeUp('sm')]: {
+      flexDirection: 'column',
+      gap: '0.6rem',
+    }
   },
   drawerBgDiv: {
     background: 'linear-gradient(to right, #ddefbb, #ffeeee)',
@@ -104,11 +125,14 @@ const colorPickerStyleSx = {
     width: '100%',
     flexDirection: 'row',
     marginBottom: '0.5rem',
-    gap: '0.5rem'
+    gap: '0.5rem',
+    [breakPoints.sizeUp('sm')]: {
+      flexDirection: 'column'
+    }
   },
   colorPickerBox: {
     display: 'grid',
-    width: '300px',
+    width: '100%',
     justifyItems: 'center'
   }
 };
@@ -126,6 +150,12 @@ const TrashIcon = muiStyled(IconButton)(props => ({
     color: props.luminance > 0.2 ? '#000' : '',
     transform: 'scale(1.2)',
     backgroundColor: 'transparent'
+  },
+  [breakPoints.sizeUp('sm')]: {
+    bottom: '0px',
+    width: '20px',
+    height: '20px',
+    fontSize: '0.5rem'
   }
 }));
 
@@ -164,13 +194,19 @@ const DrawerMain = muiStyled('main', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
   }),
-  marginLeft: `-${drawerWidth}px`,
+  marginLeft: '-350px',
+  [breakPoints.sizeUp('sm')]: {
+    marginLeft: '-200px'
+  },
   ...(open && {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     }),
-    marginLeft: 0
+    marginLeft: 0,
+    [breakPoints.sizeUp('sm')]: {
+      marginLeft: 0
+    }
   })
 }));
 const AppBar = muiStyled(MuiAppBar, {
@@ -184,8 +220,12 @@ const AppBar = muiStyled(MuiAppBar, {
   color: 'black',
   position: 'fixed',
   ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
+    width: 'calc(100% - 350px)',
+    marginLeft: '350px',
+    [breakPoints.sizeUp('sm')]: {
+      width: 'calc(100% - 200px)',
+      marginLeft: '200px'
+    },
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
@@ -203,10 +243,14 @@ const DrawerHeader = muiStyled('div')(({ theme }) => ({
 }));
 
 const DrawerButton = muiStyled(Button)(props => ({
-  width: '6rem',
+  width: '50%',
   backgroundColor: props.bgcolor,
   '&:hover': {
     backgroundColor: props.bgcolor
+  },
+  [breakPoints.sizeUp('sm')]: {
+    width: '100%',
+    height: '20px'
   }
 }));
 const ColorPickerButton = muiStyled(Button)(props => ({
@@ -216,6 +260,9 @@ const ColorPickerButton = muiStyled(Button)(props => ({
   padding: props.padding,
   color: props.bgcolor && chroma(props.bgcolor).luminance() > 0.2 && '#000',
   fontWeight: 'bold',
+  [breakPoints.sizeUp('sm')]: {
+    width: '100%'
+  },
   '&:hover': {
     backgroundColor: props.bgcolor ? props.bgcolor : '#000'
   }
@@ -225,7 +272,10 @@ const ColorPickerDiv = styled.div(props => ({
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
-  height: '100%'
+  height: '100%',
+  [breakPoints.sizeUp('sm')]: {
+    padding: '0.6rem'
+  }
 }));
 export {
   dialogStyleSX,

@@ -5,6 +5,7 @@ import OpenWithIcon from '@mui/icons-material/OpenWith';
 import chroma from 'chroma-js';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import breakPoints from '../../breakPoints';
 
 import {
   draggableColorBoxSx,
@@ -42,7 +43,10 @@ export default function DraggableColorBox({
         <Typography
           variant='h6'
           sx={{
-            color: luminance > 0.3 ? '#000' : '#fff'
+            color: luminance > 0.3 ? '#000' : '#fff',
+            [breakPoints.sizeUp('sm')]: {
+              fontSize: '0.8rem'
+            }
           }}
         >
           {color.name}
@@ -53,7 +57,13 @@ export default function DraggableColorBox({
           }}
           luminance={luminance}
         >
-          <DeleteIcon />
+          <DeleteIcon
+            sx={{
+              [breakPoints.sizeUp('sm')]: {
+                fontSize: '1rem'
+              }
+            }}
+          />
         </TrashIcon>
       </Box>
       <Box
@@ -62,7 +72,14 @@ export default function DraggableColorBox({
         {...attributes}
         {...listeners}
       >
-        <OpenWithIcon sx={{ fontSize: '2rem' }} />
+        <OpenWithIcon
+          sx={{
+            fontSize: '2rem',
+            [breakPoints.sizeUp('sm')]: {
+              fontSize: '1rem'
+            }
+          }}
+        />
       </Box>
     </ShakingDraggableColorBox>
   );
