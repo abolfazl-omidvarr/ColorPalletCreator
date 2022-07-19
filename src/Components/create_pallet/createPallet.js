@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PalletCreateDrawer from './drawer';
 import ChoosePalletNameDialogBox from './choosePalletNameDialogBox';
+import { motion } from 'framer-motion/dist/framer-motion';
 
 export default function CreatePallet({ colorPallets, setColorPallets }) {
   // open & close name dialog state hook
@@ -41,7 +42,13 @@ export default function CreatePallet({ colorPallets, setColorPallets }) {
     setColorPallets([...colorPallets, newPallet]);
   }
   return (
-    <div className='CreatePallet'>
+    <motion.div
+      className='CreatePallet'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       <ChoosePalletNameDialogBox
         open={nameDialogOpen}
         setOpen={setNameDialogOpen}
@@ -54,6 +61,6 @@ export default function CreatePallet({ colorPallets, setColorPallets }) {
         setNewColors={setNewColorList}
         deleteFromNewColorList={deleteFromNewColorList}
       />
-    </div>
+    </motion.div>
   );
 }

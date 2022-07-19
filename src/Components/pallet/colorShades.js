@@ -3,6 +3,7 @@ import { ColorShadeDiv } from './style';
 import { useOutletContext } from 'react-router-dom';
 import generatePallet, { colorLevels } from '../../colorHelper';
 import ColorBox from './colorBox';
+import { motion } from 'framer-motion/dist/framer-motion';
 
 export default function ColorShades({ colorName }) {
   const { selectedColorObj, setShowSlider, type } = useOutletContext();
@@ -23,9 +24,15 @@ export default function ColorShades({ colorName }) {
     colorShades.rgb.push(colorLvlObj.rgb);
   });
   const colorBoxes = colorShades[type].map(color => {
-    return (
-      <ColorBox key={color} color={color} name={null} singleColor />
-    );
+    return <ColorBox key={color} color={color} name={null} singleColor />;
   });
-  return <ColorShadeDiv>{colorBoxes}</ColorShadeDiv>;
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 100 }}
+    >
+      <ColorShadeDiv>{colorBoxes}</ColorShadeDiv>
+    </motion.div>
+  );
 }

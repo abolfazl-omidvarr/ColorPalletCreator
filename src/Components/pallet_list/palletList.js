@@ -6,6 +6,7 @@ import { styled as muiStyled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import breakPoints from '../../breakPoints';
+import { motion } from 'framer-motion/dist/framer-motion';
 
 const PalletListContainer = styled.div`
   --scrollbar-width: 8px;
@@ -104,24 +105,36 @@ const GridContainer = muiStyled(Grid)(props => ({
 
 export default function PalletList({ colorPallets, setColorPallets }) {
   return (
-    <PalletListBox>
-      <nav>
-        <p>Abolfazl's Color Picker</p>
-        <Link style={{color:'#badc58',cursor:'pointer'}} to={'/createPallet'}>Create a Pallet</Link>
-      </nav>
-      <PalletListContainer className='masked-overflow'>
-        <GridContainer container>
-          {colorPallets.map((colorObj, i) => (
-            <MiniPallet
-              setColorPallets={setColorPallets}
-              key={colorObj.id}
-              colorObj={colorObj}
-              tDelay={(i + 1) * 200}
-              id={colorObj.id}
-            />
-          ))}
-        </GridContainer>
-      </PalletListContainer>
-    </PalletListBox>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <PalletListBox>
+        <nav>
+          <p>Abolfazl's Color Picker</p>
+          <Link
+            style={{ color: '#badc58', cursor: 'pointer' }}
+            to={'/createPallet'}
+          >
+            Create a Pallet
+          </Link>
+        </nav>
+        <PalletListContainer className='masked-overflow'>
+          <GridContainer container>
+            {colorPallets.map((colorObj, i) => (
+              <MiniPallet
+                setColorPallets={setColorPallets}
+                key={colorObj.id}
+                colorObj={colorObj}
+                tDelay={(i + 1) * 200}
+                id={colorObj.id}
+              />
+            ))}
+          </GridContainer>
+        </PalletListContainer>
+      </PalletListBox>
+    </motion.div>
   );
 }
