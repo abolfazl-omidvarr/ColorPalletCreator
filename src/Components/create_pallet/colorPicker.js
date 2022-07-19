@@ -4,9 +4,12 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 import { colorPickerStyleSx, ColorPickerButton } from './style';
 
-export default function ColorPicker({ newColors, setNewColors }) {
+let selectedRandomColor = [];
+
+export default function ColorPicker({ colorPallets, newColors, setNewColors }) {
   const [colorCodes, setColorCodes] = useState('');
   const [colorName, setColorName] = useState('');
+  // const [selectedRandomColor, setSelectedRandomColor] = use;
 
   //add a validation rule for TextValidator
   useEffect(() => {
@@ -21,6 +24,26 @@ export default function ColorPicker({ newColors, setNewColors }) {
   function submitClickHandler() {
     setNewColors([...newColors, { color: colorCodes.hex, name: colorName }]);
   }
+  function randomClickHandler() {
+    let iter = true;
+    let palletNum;
+    let palletIndex;
+    let colorNum;
+    let colorIndex;
+
+    while (iter) {
+      palletNum = colorPallets.length;
+      palletIndex = Math.floor(Math.random() * palletNum);
+      colorNum = colorPallets[palletIndex].colors.length;
+      colorIndex = Math.floor(Math.random() * colorNum);
+      if (!selectedRandomColor.includes(`${palletIndex}${colorIndex}`))
+        iter = false;
+    }
+    selectedRandomColor.push(`${palletIndex}${colorIndex}`);
+    
+    const color = colorPallets[palletIndex].colors[colorIndex];
+    setNewColors([...newColors, { color: color.color, name: color.name }]);
+  }
   return (
     <Box sx={colorPickerStyleSx.colorPickerBox}>
       <Stack sx={colorPickerStyleSx.pickerButtonStack}>
@@ -33,10 +56,11 @@ export default function ColorPicker({ newColors, setNewColors }) {
           Clear
         </ColorPickerButton>
         <ColorPickerButton
-          onClick={() => 0}
+          onClick={() => randomClickHandler()}
           variant='contained'
           bgcolor='#398FF4'
           width={'50%'}
+          disabled={newColors.length === 20}
         >
           Random
         </ColorPickerButton>
@@ -67,6 +91,7 @@ export default function ColorPicker({ newColors, setNewColors }) {
           type='submit'
           bgcolor={colorCodes.hex}
           width={'100%'}
+          disabled={newColors.length === 20}
         >
           Add Color
         </ColorPickerButton>

@@ -7,7 +7,6 @@ import breakpoints from '../../breakPoints';
 const ColorBoxDiv = styled.div(props => ({
   backgroundColor: props.bgColor,
   position: 'relative',
-  display: 'inline-block',
   width: '100%',
   height: '100%',
   transition: 'all 0.1s',
@@ -123,14 +122,16 @@ const PalletColorsDiv = styled.div(() => ({
   gridTemplateRows: 'auto',
   backgroundColor: '#00000044',
   height: '89vh',
-  overflowY: 'scroll',
+  overflowY: 'hidden',
+  overflowX: 'hidden',
   [breakpoints.sizeUp('md')]: {
     gridTemplateColumns: ' repeat(2,1fr)',
     gridTemplateRows: 'auto'
   },
   [breakpoints.sizeUp('sm')]: {
     gridTemplateColumns: ' repeat(1,1fr)',
-    gridTemplateRows: 'auto'
+    gridTemplateRows: 'auto',
+    overflowY: 'scroll'
   }
 }));
 

@@ -39,33 +39,40 @@ export default function DraggableColorBox({
       ref={setNodeRef}
       color={color.color}
     >
-      <Box sx={draggableColorBoxSx.title}>
-        <Typography
-          variant='h6'
+      <TrashIcon
+        onClick={e => {
+          deleteFromNewColorList(color);
+        }}
+        luminance={luminance}
+      >
+        <DeleteIcon
           sx={{
-            color: luminance > 0.3 ? '#000' : '#fff',
             [breakPoints.sizeUp('sm')]: {
-              fontSize: '0.8rem'
+              fontSize: '1rem'
             }
           }}
-        >
-          {color.name}
-        </Typography>
-        <TrashIcon
-          onClick={e => {
-            deleteFromNewColorList(color);
-          }}
-          luminance={luminance}
-        >
-          <DeleteIcon
-            sx={{
-              [breakPoints.sizeUp('sm')]: {
-                fontSize: '1rem'
-              }
-            }}
-          />
-        </TrashIcon>
-      </Box>
+        />
+      </TrashIcon>
+      <Typography
+        variant='h6'
+        sx={{
+          color: luminance > 0.3 ? '#000' : '#fff',
+          position: 'absolute',
+          bottom: '0',
+          left: '5px',
+          [breakPoints.sizeUp('lg')]: {
+            fontSize: '1rem'
+          },
+          [breakPoints.sizeUp('md')]: {
+            fontSize: '0.9rem'
+          },
+          [breakPoints.sizeUp('sm')]: {
+            fontSize: '0.8rem'
+          }
+        }}
+      >
+        {color.name}
+      </Typography>
       <Box
         sx={draggableColorBoxSx.dragBox}
         className={'dragBox'}

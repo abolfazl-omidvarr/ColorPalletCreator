@@ -59,14 +59,20 @@ const drawerStyleSx = {
   drawer: {
     width: 350,
     flexShrink: 0,
+    [breakPoints.sizeUp('md')]: {
+      width: 250
+    },
     [breakPoints.sizeUp('sm')]: {
-      width: 200
+      width: 230
     },
     '& .MuiDrawer-paper': {
       width: 350,
       boxSizing: 'border-box',
+      [breakPoints.sizeUp('md')]: {
+        width: 250
+      },
       [breakPoints.sizeUp('sm')]: {
-        width: 200
+        width: 230
       }
     }
   },
@@ -91,7 +97,7 @@ const drawerStyleSx = {
     marginLeft: 'auto',
     [breakPoints.sizeUp('sm')]: {
       flexDirection: 'column',
-      gap: '0.6rem',
+      gap: '0.6rem'
     }
   },
   drawerBgDiv: {
@@ -126,7 +132,7 @@ const colorPickerStyleSx = {
     flexDirection: 'row',
     marginBottom: '0.5rem',
     gap: '0.5rem',
-    [breakPoints.sizeUp('sm')]: {
+    [breakPoints.sizeUp('md')]: {
       flexDirection: 'column'
     }
   },
@@ -140,11 +146,11 @@ const colorPickerStyleSx = {
 const TrashIcon = muiStyled(IconButton)(props => ({
   color: props.luminance < 0.1 ? '#fff' : '',
   position: 'absolute',
-  bottom: '5px',
-  right: '5px',
+  top: '2px',
+  right: '2px',
   transition: props.theme.transitions.create(['transform', 'color'], {
     easing: props.theme.transitions.easing.sharp,
-    duration: 200
+    duration: 230
   }),
   '&:hover': {
     color: props.luminance > 0.2 ? '#000' : '',
@@ -195,8 +201,11 @@ const DrawerMain = muiStyled('main', {
     duration: theme.transitions.duration.leavingScreen
   }),
   marginLeft: '-350px',
+  [breakPoints.sizeUp('md')]: {
+    marginLeft: '-250px'
+  },
   [breakPoints.sizeUp('sm')]: {
-    marginLeft: '-200px'
+    marginLeft: '-230px'
   },
   ...(open && {
     transition: theme.transitions.create('margin', {
@@ -204,6 +213,9 @@ const DrawerMain = muiStyled('main', {
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0,
+    [breakPoints.sizeUp('md')]: {
+      marginLeft: 0
+    },
     [breakPoints.sizeUp('sm')]: {
       marginLeft: 0
     }
@@ -222,9 +234,13 @@ const AppBar = muiStyled(MuiAppBar, {
   ...(open && {
     width: 'calc(100% - 350px)',
     marginLeft: '350px',
+    [breakPoints.sizeUp('md')]: {
+      width: 'calc(100% - 250px)',
+      marginLeft: '250px'
+    },
     [breakPoints.sizeUp('sm')]: {
-      width: 'calc(100% - 200px)',
-      marginLeft: '200px'
+      width: 'calc(100% - 230px)',
+      marginLeft: '230px'
     },
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
@@ -260,7 +276,7 @@ const ColorPickerButton = muiStyled(Button)(props => ({
   padding: props.padding,
   color: props.bgcolor && chroma(props.bgcolor).luminance() > 0.2 && '#000',
   fontWeight: 'bold',
-  [breakPoints.sizeUp('sm')]: {
+  [breakPoints.sizeUp('md')]: {
     width: '100%'
   },
   '&:hover': {
@@ -273,7 +289,7 @@ const ColorPickerDiv = styled.div(props => ({
   alignItems: 'center',
   width: '100%',
   height: '100%',
-  [breakPoints.sizeUp('sm')]: {
+  [breakPoints.sizeUp('md')]: {
     padding: '0.6rem'
   }
 }));

@@ -56,6 +56,7 @@ export default function CreatePallet({ colorPallets, setColorPallets }) {
         updateColorPallet={updateColorPallet}
       />
       <PalletCreateDrawer
+        colorPallets={colorPallets}
         setNameDialogOpen={setNameDialogOpen}
         newColors={newColorList}
         setNewColors={setNewColorList}

@@ -10,12 +10,11 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import DraggableColorBox from './draggableColorBox';
 import ColorPicker from './colorPicker';
-import useWindowDimensions from './windowDimensionHook';
 import {
   closestCenter,
   DndContext,
   PointerSensor,
-  // TouchSensor,
+  TouchSensor,
   useSensor,
   DragOverlay
 } from '@dnd-kit/core';
@@ -34,6 +33,7 @@ import {
 } from './style';
 
 export default function PalletCreateDrawer({
+  colorPallets,
   newColors,
   setNewColors,
   emptyNewColors,
@@ -46,7 +46,7 @@ export default function PalletCreateDrawer({
   //state hook for drawer open/close
   const [open, setOpen] = useState(true);
 
-  const sensors = [useSensor(PointerSensor)]; //sensors for dndKit
+  const sensors = [useSensor(PointerSensor), useSensor(TouchSensor)]; //sensors for dndKit
 
   //sorting algorithm for rectSortingStrategy
   function dragHandler({ active, over }) {
@@ -91,8 +91,6 @@ export default function PalletCreateDrawer({
       overLay={true}
     />
   ) : null;
-  // const { width, height } = useWindowDimensions();
-  // console.log(width);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -126,6 +124,7 @@ export default function PalletCreateDrawer({
         <Box sx={drawerStyleSx.drawerBgDiv} />
         <ColorPickerDiv>
           <ColorPicker
+            colorPallets={colorPallets}
             setNewColors={setNewColors}
             newColors={newColors}
             emptyNewColors={emptyNewColors}

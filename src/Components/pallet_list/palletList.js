@@ -65,13 +65,14 @@ const PalletListBox = styled(Box)(props => ({
     margin: '100px',
     width: '100%',
     margin: '0rem auto 0rem auto',
-    backgroundColor: '#66626260',
-    backdropFilter: 'blur(15px)',
+    backgroundColor: '#ffe6ab40',
+    backdropFilter: 'blur(12px)',
     borderRadius: '10px',
     boxSizing: 'border-box',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '1rem 1rem',
+    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 25px 50px -12px',
     p: {
       color: '#fff',
       fontSize: '1.5rem'
@@ -115,7 +116,7 @@ export default function PalletList({ colorPallets, setColorPallets }) {
         <nav>
           <p>Abolfazl's Color Picker</p>
           <Link
-            style={{ color: '#badc58', cursor: 'pointer' }}
+            style={{ color: '#fff', cursor: 'pointer' }}
             to={'/createPallet'}
           >
             Create a Pallet

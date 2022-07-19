@@ -19,5 +19,24 @@ export default {
     }
     return `@media (max-width: ${size}px)`;
   },
-  sizeDown() {}
+  sizeDown(bp, custom) {
+    let size;
+    switch (bp) {
+      case 'sm':
+        size = 601;
+        break;
+      case 'md':
+        size = 901;
+        break;
+      case 'lg':
+        size = 1201;
+        break;
+      case 'xl':
+        size = 1537;
+        break;
+      default:
+        size = custom;
+    }
+    return `@media (min-width: ${size}px)`;
+  }
 };
