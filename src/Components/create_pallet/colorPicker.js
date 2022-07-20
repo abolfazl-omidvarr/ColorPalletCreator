@@ -17,12 +17,19 @@ export default function ColorPicker({ colorPallets, newColors, setNewColors }) {
       newColors.every(color => color.name.toLowerCase() !== value.toLowerCase())
     );
     ValidatorForm.addValidationRule('isUniqueColorCode', value =>
-      newColors.every(color => color.hex !== colorCodes.hex)
+      newColors.every(color => {
+        console.log();
+        return color.color !== colorCodes.hex;
+      })
     );
   });
 
   function submitClickHandler() {
-    setNewColors([...newColors, { color: colorCodes.hex, name: colorName }]);
+    console.log(colorCodes);
+    setNewColors([
+      ...newColors,
+      { color: !!colorCodes ? colorCodes.hex : '#000', name: colorName }
+    ]);
   }
   function randomClickHandler() {
     let iter = true;
@@ -40,7 +47,7 @@ export default function ColorPicker({ colorPallets, newColors, setNewColors }) {
         iter = false;
     }
     selectedRandomColor.push(`${palletIndex}${colorIndex}`);
-    
+
     const color = colorPallets[palletIndex].colors[colorIndex];
     setNewColors([...newColors, { color: color.color, name: color.name }]);
   }
