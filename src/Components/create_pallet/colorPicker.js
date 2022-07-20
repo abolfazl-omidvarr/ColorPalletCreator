@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Stack, Box } from '@mui/material';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
-import { colorPickerStyleSx, ColorPickerButton } from './style';
+import { colorPickerStyleSx, ColorPickerButton } from './createPalletStyle';
 
 let selectedRandomColor = [];
 

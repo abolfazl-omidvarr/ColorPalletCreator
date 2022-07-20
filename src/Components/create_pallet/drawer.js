@@ -30,7 +30,7 @@ import {
   DrawerHeader,
   DrawerButton,
   ColorPickerDiv
-} from './style';
+} from './createPalletStyle';
 
 export default function PalletCreateDrawer({
   colorPallets,

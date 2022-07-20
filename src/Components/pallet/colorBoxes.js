@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { PalletColorsDiv } from './style';
+import { PalletColorsDiv } from './palletStyle';
 import generatePallet from '../../colorHelper';
 import ColorBox from './colorBox';
 import { motion } from 'framer-motion/dist/framer-motion';

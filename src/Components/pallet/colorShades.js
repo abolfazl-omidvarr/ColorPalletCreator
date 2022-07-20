@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { ColorShadeDiv } from './style';
 import { useOutletContext } from 'react-router-dom';
 import generatePallet, { colorLevels } from '../../colorHelper';
 import ColorBox from './colorBox';
 import { motion } from 'framer-motion/dist/framer-motion';
+import { ColorShadeDiv } from './palletStyle';
 
 export default function ColorShades({ colorName }) {
   const oL = useOutletContext(); //extracting Outlet props

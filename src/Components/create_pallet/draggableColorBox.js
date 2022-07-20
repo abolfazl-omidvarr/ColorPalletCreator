@@ -11,7 +11,7 @@ import {
   draggableColorBoxSx,
   TrashIcon,
   ShakingDraggableColorBox
-} from './style';
+} from './createPalletStyle';
 
 export default function DraggableColorBox({
   color,

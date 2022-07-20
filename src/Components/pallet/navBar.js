@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PalletNav } from './style';
 import ColorSlider from './colorRange';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import breakpoints from '../../breakPoints';
+import { PalletNav } from './palletStyle';
 
 export default function NavBar({ setLevel, upperSetType, showSlider }) {
   const navigate = useNavigate();

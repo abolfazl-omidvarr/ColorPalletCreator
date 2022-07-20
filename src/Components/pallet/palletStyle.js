@@ -109,7 +109,7 @@ const ColorBoxDiv = styled.div(props => ({
     opacity: '1'
   },
   [breakpoints.sizeUp('sm')]: {
-    height: props.singleColor ? '100%' : '60px',
+    height: props.colorShades ? '100%' : '60px',
     '.more': {
       opacity: 1
     }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import chroma from 'chroma-js';
-import { ColorBoxDiv } from './style';
+import { ColorBoxDiv } from './palletStyle';
 
 export default function ColorBox({ color, name, colorShades }) {
   const history = useNavigate();

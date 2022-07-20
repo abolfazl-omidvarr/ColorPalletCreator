@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import Picker from 'emoji-picker-react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { dialogStyleSX } from './style';
+import { dialogStyleSX } from './createPalletStyle';
 
 //slide transition for dialog box
 const Transition = React.forwardRef(function Transition(props, ref) {

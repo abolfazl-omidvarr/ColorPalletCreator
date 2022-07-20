@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion/dist/framer-motion';
-import { PalletFooterDiv } from './style';
+import { PalletFooterDiv } from './palletStyle';
 import NavBar from './navBar';
 export default function ColorPallet({ colorsObj }) {
   const [level, setLevel] = useState('500');
