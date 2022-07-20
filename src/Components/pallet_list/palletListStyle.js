@@ -75,7 +75,7 @@ const PalletListContainer = styled.div`
   --mask-height: 32px;
 
   overflow-y: auto;
-  height: 85%;
+  height: 92%;
   padding-bottom: var(--mask-height);
   padding-top: var(--mask-height);
   --mask-image-content: linear-gradient(
@@ -95,9 +95,9 @@ const PalletListContainer = styled.div`
   ${breakPoints.sizeUp('md')} {
     height: 90%;
   }
-  ${breakPoints.sizeUp('sm')} {
-    height: 98%;
-  }
+  // ${breakPoints.sizeUp('sm')} {
+  //   height: 98%;
+  // }
 `;
 const PalletListBox = styled(Box)({
   '-webkit-scrollbar-track': {
